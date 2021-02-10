@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DApp</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<style>
+    .split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    }
+
+    .left {
+    left: 0;
+    background-color: yellow;
+    }
+
+    .right {
+    right: 0;
+    background-color: blue;
+    }
+
+    .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    }
+</style>
+
+<script>
+    function myFunction() {
+    var text1= $('#text1').val();
+    var text2= $('#text2').val();
+    var text3= $('#text3').val();
+    var text4= $('#text4').val();
+    var text5= $('#text5').val();
+    var text6= $('#text6').val();
+
+    $.ajax({
+              url: "/join",
+              type: "POST",
+              data: {text1:text1, text2:text2, text3:text3, text4:text4, text5:text5, text6:text6}          
+            }).done(function(response) {
+                var html= "<br><br><br><p> <b> RESULT : <b><p>";  
+                response =response.result;
+                 $.each(response,function(key,val){
+                 console.log(val);
+                    html+="<p>"+val+"<p>"                
+                });
+                html +="<br>";
+                $(".show-data").append(html);
+            });
+};  
+</script>
+<body>
+    <div class="split left">
+        <div class="centered">
+            <h2>Taking input from Farmers</h2>
+            <p>                    
+                <b>ID VALUE <input type="text" id="text1" name="text1"><br><br>
+                FRUIT <input type="text" id="text5" name="text5"><br><br>
+                TEMPERATURE <input type="text" id="text2" name="text2"><br><br>
+                WEIGHT <input type="text" id="text3" name="text3"><br><br>
+                NO. OF DAYS <input type="text" id="text4" name="text4"><br><br>
+                FLAG <input type="text" id="text6" name="text6"><br><br>
+                PRICE <input type="text" id="text7" name="text7"><br><br>
+                <button id="clicked" onclick="myFunction()">SUBMIT</button></b>
+            </p>
+            <div class="show-data" ></div>
+        </div>
+    </div>
+    
+    <div class="split right">
+        <div class="centered">
+            <h2>Taking input from Customers</h2>
+            <p>
+                <b>
+                    PRODUCT <input type="text" id="text8" name="text8"><br><br>
+                    <button id="clicked1" onclick="myfunction1()">BUY</button>
+                </b>
+            </p>
+        </div>
+    </div> 
+</body>
+</html>
