@@ -36,29 +36,50 @@
 </style>
 
 <script>
-    function myFunction() {
-    var text1= $('#text1').val();
-    var text2= $('#text2').val();
-    var text3= $('#text3').val();
-    var text4= $('#text4').val();
-    var text5= $('#text5').val();
-    var text6= $('#text6').val();
+    function myfunction1() {
+        var text8=$('#text8').val();
 
-    $.ajax({
-              url: "/join",
-              type: "POST",
-              data: {text1:text1, text2:text2, text3:text3, text4:text4, text5:text5, text6:text6}          
-            }).done(function(response) {
-                var html= "<br><br><br><p> <b> RESULT : <b><p>";  
-                response =response.result;
-                 $.each(response,function(key,val){
-                 console.log(val);
-                    html+="<p>"+val+"<p>"                
-                });
-                html +="<br>";
-                $(".show-data").append(html);
+        $.ajax({
+            url: "/join1",
+            type: "POST",
+            data: {text8:text8}
+        }).done(function(response) {
+            var html1="<br><br><br><p> <b> OUTPUT : <b><p>";
+            response1 = response.result1;
+            $.each(response1, function(key, val) {
+                console.log(val);
+                html1 +="<p>"+val+"<p>" 
             });
-};  
+            html1 +="<br>";
+            $(".show-data").append(html1);
+        });
+
+    };
+
+    function myFunction() {
+        var text1= $('#text1').val();
+        var text2= $('#text2').val();
+        var text3= $('#text3').val();
+        var text4= $('#text4').val();
+        var text5= $('#text5').val();
+        var text6= $('#text6').val();
+        var text7= $('#text7').val();
+
+        $.ajax({
+                url: "/join",
+                type: "POST",
+                data: {text1:text1, text2:text2, text3:text3, text4:text4, text5:text5, text6:text6, text7:text7}          
+                }).done(function(response) {
+                    var html= "<br><br><br><p> <b> RESULT : <b><p>";  
+                    response =response.result;
+                    $.each(response,function(key,val){
+                    console.log(val);
+                        html+="<p>"+val+"<p>"                
+                    });
+                    html +="<br>";
+                    $(".show-data").append(html);
+                });
+    };  
 </script>
 <body>
     <div class="split left">
