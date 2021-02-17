@@ -8,15 +8,16 @@ contract farm_threshold {
         uint256 weight;
         uint256 noOfDays;
         bool flag;
+        uint256 price;
     }
     
     mapping(address => mapping(uint => Fruit)) public fruitArray;
     
-    function addFruit(uint _id, string memory _fruitName, uint _temperature, uint _weight, uint _noOfDays, bool _flag) public {
-        fruitArray[msg.sender][_id] = Fruit(_fruitName, _temperature, _weight, _noOfDays, _flag);
+    function addFruit(uint _id, string memory _fruitName, uint _temperature, uint _weight, uint _noOfDays, bool _flag, uint _price) public {
+        fruitArray[msg.sender][_id] = Fruit(_fruitName, _temperature, _weight, _noOfDays, _flag, _price);
     }
 
-    function threshold_value_checking(uint _id, uint _expiryDays) public {
+     function threshold_value_checking(uint _id, uint _expiryDays) public {
         if(fruitArray[msg.sender][_id].temperature >= 40) {
             fruitArray[msg.sender][_id].flag = false;
         }
