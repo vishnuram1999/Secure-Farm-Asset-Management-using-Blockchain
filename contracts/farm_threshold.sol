@@ -8,12 +8,12 @@ contract farm_threshold {
         uint256 weight;
         uint256 noOfDays;
         bool flag;
-        uint256 price;
+        string price;
     }
     
     mapping(address => mapping(uint => Fruit)) public fruitArray;
     
-    function addFruit(uint _id, string memory _fruitName, uint _temperature, uint _weight, uint _noOfDays, bool _flag, uint _price) public {
+    function addFruit(uint _id, string memory _fruitName, uint _temperature, uint _weight, uint _noOfDays, bool _flag, string memory _price) public {
         fruitArray[msg.sender][_id] = Fruit(_fruitName, _temperature, _weight, _noOfDays, _flag, _price);
     }
 
@@ -31,10 +31,10 @@ contract farm_threshold {
     
     function output(uint _id) public view returns(string memory) {
         if(fruitArray[msg.sender][_id].flag == false) {
-            return("Food is spoiled");
+            return string(abi.encodePacked("Food is spoiled.", " Price is ", fruitArray[msg.sender][_id].price));
         }
         else {
-            return("Food is good");
-        }
+            return string(abi.encodePacked("Food is good.", " Price is ", fruitArray[msg.sender][_id].price));
+        }   
     }
 }
