@@ -8,7 +8,7 @@
 <style>
     .split {
     height: 100%;
-    width: 50%;
+    width: 34%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -24,6 +24,11 @@
     .right {
     right: 0;
     background-color: blue;
+    }
+
+    .center {
+      left:425px;
+      background-color: brown;
     }
 
     .centered {
@@ -86,25 +91,45 @@
         <div class="centered">
             <h2>Taking input from Farmers</h2>
             <p>                    
-                <b>ID VALUE <input type="text" id="text1" name="text1"><br><br>
-                FRUIT <input type="text" id="text5" name="text5"><br><br>
-                TEMPERATURE <input type="text" id="text2" name="text2"><br><br>
-                WEIGHT <input type="text" id="text3" name="text3"><br><br>
-                NO. OF DAYS <input type="text" id="text4" name="text4"><br><br>
-                FLAG <input type="text" id="text6" name="text6"><br><br>
-                PRICE <input type="text" id="text7" name="text7"><br><br>
+                <b>ID VALUE <br> <input type="text" id="text1" name="text1"><br><br>
+                FRUIT <br><input type="text" id="text5" name="text5"><br><br>
+                TEMPERATURE <br> <input type="text" id="text2" name="text2"><br><br>
+                WEIGHT <br><input type="text" id="text3" name="text3"><br><br>
+                NO. OF DAYS <br><input type="text" id="text4" name="text4"><br><br>
+                FLAG <br><input type="text" id="text6" name="text6"><br><br>
+                PRICE <br><input type="text" id="text7" name="text7"><br><br>
                 <button id="clicked" onclick="myFunction()">SUBMIT</button></b>
             </p>
             <div class="show-data" ></div>
         </div>
     </div>
+    <div class="split center">
+        <div class="centered">
+          <h2>Farmers booking the assets</h2>
+          <b>1. Pesticides<br>
+            2. Livestocks<br>
+            3. Machineries<br>
+          </b>
+          <p>
+            <b>
+              ID <br><input type="text" id="text9" name="text9"><br><br>
+              DATE <br><input type="text" id="text10" name="text10"><br><br>
+              TIME <br><input type="text" id="text11" name="text11"><br><br>
+              <button id="clicked2" onlcick="myfunction2()">BOOK</button>
+            </b>
+          </p>
+          <div class="show-data2"></div>
+        </div>
+      </div>
     
     <div class="split right">
         <div class="centered">
             <h2>Taking input from Customers</h2>
+            <b>1. Apple<br>
+            2. Orange</b>
             <p>
                 <b>
-                    PRODUCT <input type="text" id="text8" name="text8"><br><br>
+                    PRODUCT <br> <input type="text" id="text8" name="text8"><br><br>
                     <button id="clicked1" onclick="myfunction1()">BUY</button>
                 </b>
             </p>
