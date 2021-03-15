@@ -67,13 +67,12 @@
         var text3= $('#text3').val();
         var text4= $('#text4').val();
         var text5= $('#text5').val();
-        var text6= $('#text6').val();
         var text7= $('#text7').val();
 
         $.ajax({
                 url: "/join",
                 type: "POST",
-                data: {text1:text1, text2:text2, text3:text3, text4:text4, text5:text5, text6:text6, text7:text7}          
+                data: {text1:text1, text2:text2, text3:text3, text4:text4, text5:text5, text7:text7}          
                 }).done(function(response) {
                     var html= "<br><br><br><p> <b> RESULT : <b><p>";  
                     response =response.result;
@@ -96,7 +95,6 @@
                 TEMPERATURE <br> <input type="text" id="text2" name="text2"><br><br>
                 WEIGHT <br><input type="text" id="text3" name="text3"><br><br>
                 NO. OF DAYS <br><input type="text" id="text4" name="text4"><br><br>
-                FLAG <br><input type="text" id="text6" name="text6"><br><br>
                 PRICE <br><input type="text" id="text7" name="text7"><br><br>
                 <button id="clicked" onclick="myFunction()">SUBMIT</button></b>
             </p>

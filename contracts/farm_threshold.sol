@@ -2,7 +2,7 @@ pragma solidity ^0.7.4;
 
 contract farm_threshold {
     
-    struct Fruit {
+    struct Fruit{
         string fruitName;
         uint256 temperature;
         uint256 weight;
@@ -13,8 +13,8 @@ contract farm_threshold {
     
     mapping(address => mapping(uint => Fruit)) public fruitArray;
     
-    function addFruit(uint _id, string memory _fruitName, uint _temperature, uint _weight, uint _noOfDays, bool _flag, string memory _price) public {
-        fruitArray[msg.sender][_id] = Fruit(_fruitName, _temperature, _weight, _noOfDays, _flag, _price);
+    function addFruit(uint _id, string memory _fruitName, uint _temperature, uint _weight, uint _noOfDays, string memory _price) public {
+        fruitArray[msg.sender][_id] = Fruit(_fruitName, _temperature, _weight, _noOfDays, true, _price);
     }
 
      function threshold_value_checking(uint _id, uint _expiryDays) public {
