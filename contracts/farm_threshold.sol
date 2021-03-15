@@ -37,4 +37,47 @@ contract farm_threshold {
             return string(abi.encodePacked("Food is good.", " Price is ", fruitArray[msg.sender][_id].price));
         }   
     }
+    
+    struct asset {
+        string asset_name;
+        uint day;
+        uint month;
+        uint year;
+        bool flag;
+    }
+    
+    mapping(address => mapping(uint => asset)) public assetArray;
+    
+    function book_asset(uint _id, string memory _asset_name, uint _day, uint _month, uint _year) public {
+        assetArray[msg.sender][_id] = asset(_asset_name, _day, _month, _year, true);
+    }
+    
+    function check_asset(uint _id, uint _day, uint _month, uint _year) public {
+        if(assetArray[msg.sender][_id].flag == false) {
+            assetArray[msg.sender][_id].flag = true;
+        }
+        else if(assetArray[msg.sender][_id].day == _day && assetArray[msg.sender][_id].month == _month && assetArray[msg.sender][_id].year == _year) {
+            assetArray[msg.sender][_id].flag = false;
+        }
+    }
+    
+    function print(uint _id) public view returns(string memory) {
+        if(assetArray[msg.sender][_id].flag == false) {
+            return string(abi.encodePacked("Asset is booked already by someone"));
+        }
+        else {
+             return string(abi.encodePacked("successfully booked"));
+        }
+        
+    }
+    
+    function print1(uint _id) public view returns(string memory) {
+        if(assetArray[msg.sender][_id].flag == false) {
+            return string(abi.encodePacked("Asset is booked already by someone"));
+        }
+        else {
+             return string(abi.encodePacked("Available"));
+        }
+        
+    }
 }

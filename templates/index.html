@@ -41,6 +41,51 @@
 </style>
 
 <script>
+    function myfunction3() {
+        var text9=$('#text9').val();
+        var text10=$('#text10').val();
+        var text11=$('#text11').val();
+        var text12=$('#text12').val();
+        
+        $.ajax({
+            url: "/join3",
+            type: "POST",
+            data: {text9:text9, text10:text10, text11:text11, text12:text12}
+        }).done(function(response) {
+            var html3="<br><br><br><p> <b>  <b><p>";
+            response3 = response.result3;
+            $.each(response3, function(key, val) {
+                console.log(val);
+                html3 +="<p>"+val+"<p>" 
+            });
+            html3 +="<br>";
+            $(".show-data3").append(html3);
+            
+        });
+        
+    };
+
+    function myfunction2() {
+        var text9=$('#text9').val();
+        var text10=$('#text10').val();
+        var text11=$('#text11').val();
+        var text12=$('#text12').val();
+        $.ajax({
+            url: "/join2",
+            type: "POST",
+            data: {text9:text9, text10:text10, text11:text11, text12:text12}
+        }).done(function(response) {
+            var html2="<br><br><br><p> <b>  <b><p>";
+            response2 = response.result2;
+            $.each(response2, function(key, val) {
+                console.log(val);
+                html2 +="<p>"+val+"<p>" 
+            });
+            html2 +="<br>";
+            $(".show-data2").append(html2);
+        });
+    };
+
     function myfunction1() {
         var text8=$('#text8').val();
 
@@ -58,7 +103,6 @@
             html1 +="<br>";
             $(".show-data1").append(html1);
         });
-
     };
 
     function myFunction() {
@@ -112,10 +156,13 @@
             <b>
               ID <br><input type="text" id="text9" name="text9"><br><br>
               DATE <br><input type="text" id="text10" name="text10"><br><br>
-              TIME <br><input type="text" id="text11" name="text11"><br><br>
-              <button id="clicked2" onlcick="myfunction2()">BOOK</button>
+              MONTH <br><input type="text" id="text11" name="text11"><br><br>
+              YEAR <br><input type="text" id="text12" name="text12"><br><br>
+              <button id="clicked3" onclick="myfunction3()">CHECK</button>
+              <button id="clicked2" onclick="myfunction2()">BOOK</button>
             </b>
           </p>
+          <div class="show-data3"></div>
           <div class="show-data2"></div>
         </div>
       </div>
