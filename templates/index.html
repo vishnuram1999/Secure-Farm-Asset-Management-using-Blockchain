@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>DApp</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 </head>
 <style>
     .split {
@@ -18,17 +19,17 @@
 
     .left {
     left: 0;
-    background-color: yellow;
+    background-color: #ffeead;
     }
 
     .right {
     right: 0;
-    background-color: blue;
+    background-color: #ff6f69;
     }
 
     .center {
       left:425px;
-      background-color: brown;
+      background-color: #ffcc5c; 
     }
 
     .centered {
@@ -38,6 +39,23 @@
     transform: translate(-50%, -50%);
     text-align: center;
     }
+
+    body {
+        font-family: 'Montserrat';
+    }
+
+    #clicked, #clicked1, #clicked2, #clicked3 {
+        border: none;
+        cursor: pointer;
+        margin: 4px 2px;
+        padding: 10px 25px;
+        background-color: yellowgreen;
+    }
+
+    input {
+        border: none;
+        padding: 3px 20px;
+    }
 </style>
 
 <script>
@@ -46,13 +64,14 @@
         var text10=$('#text10').val();
         var text11=$('#text11').val();
         var text12=$('#text12').val();
-        
+
         $.ajax({
             url: "/join3",
             type: "POST",
             data: {text9:text9, text10:text10, text11:text11, text12:text12}
         }).done(function(response) {
-            var html3="<br><br><br><p> <b>  <b><p>";
+            var html3="<br><p><b>  <b><p>";
+            $(".show-data3").empty();
             response3 = response.result3;
             $.each(response3, function(key, val) {
                 console.log(val);
@@ -75,7 +94,8 @@
             type: "POST",
             data: {text9:text9, text10:text10, text11:text11, text12:text12}
         }).done(function(response) {
-            var html2="<br><br><br><p> <b>  <b><p>";
+            var html2="<br><p><b>  <b><p>";
+            $(".show-data3").empty();
             response2 = response.result2;
             $.each(response2, function(key, val) {
                 console.log(val);
@@ -94,7 +114,8 @@
             type: "POST",
             data: {text8:text8}
         }).done(function(response) {
-            var html1="<br><br><br><p> <b> OUTPUT : <b><p>";
+            var html1="<br><p><b><b><p>";
+            $(".show-data1").empty();
             response1 = response.result1;
             $.each(response1, function(key, val) {
                 console.log(val);
@@ -118,7 +139,8 @@
                 type: "POST",
                 data: {text1:text1, text2:text2, text3:text3, text4:text4, text5:text5, text7:text7}          
                 }).done(function(response) {
-                    var html= "<br><br><br><p> <b> RESULT : <b><p>";  
+                    var html= "<br><p><b> <b><p>";  
+                    $(".show-data").empty();
                     response =response.result;
                     $.each(response,function(key,val){
                     console.log(val);
@@ -132,14 +154,14 @@
 <body>
     <div class="split left">
         <div class="centered">
-            <h2>Taking input from Farmers</h2>
+            <h2>Farmers Corner</h2>
             <p>                    
-                <b>ID VALUE <br> <input type="text" id="text1" name="text1"><br><br>
-                FRUIT <br><input type="text" id="text5" name="text5"><br><br>
-                TEMPERATURE <br> <input type="text" id="text2" name="text2"><br><br>
-                WEIGHT <br><input type="text" id="text3" name="text3"><br><br>
+                <b>ID<br> <input type="text" id="text1" name="text1"><br><br>
+                FRUIT NAME<br><input type="text" id="text5" name="text5"><br><br>
+                TEMPERATURE (Fahrenheit) <br> <input type="text" id="text2" name="text2"><br><br>
+                WEIGHT (Kg) <br><input type="text" id="text3" name="text3"><br><br>
                 NO. OF DAYS <br><input type="text" id="text4" name="text4"><br><br>
-                PRICE <br><input type="text" id="text7" name="text7"><br><br>
+                PRICE (Rupees)<br><input type="text" id="text7" name="text7"><br><br>
                 <button id="clicked" onclick="myFunction()">SUBMIT</button></b>
             </p>
             <div class="show-data" ></div>
@@ -147,7 +169,7 @@
     </div>
     <div class="split center">
         <div class="centered">
-          <h2>Farmers booking the assets</h2>
+          <h2>Asset Booking</h2>
           <b>1. Pesticides<br>
             2. Livestocks<br>
             3. Machineries<br>
@@ -169,12 +191,12 @@
     
     <div class="split right">
         <div class="centered">
-            <h2>Taking input from Customers</h2>
+            <h2>Buy Vegetables/Fruits</h2>
             <b>1. Apple<br>
             2. Orange</b>
             <p>
                 <b>
-                    PRODUCT <br> <input type="text" id="text8" name="text8"><br><br>
+                    FRUIT ID <br> <input type="text" id="text8" name="text8"><br><br>
                     <button id="clicked1" onclick="myfunction1()">BUY</button>
                 </b>
             </p>
